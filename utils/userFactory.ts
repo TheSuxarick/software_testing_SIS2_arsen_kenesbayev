@@ -16,7 +16,8 @@ export async function createTestUser(): Promise<TestUser> {
   const uniqueId = `${Date.now()}_${crypto.randomInt(10000, 99999)}`;
   const email = `user_${uniqueId}@testcompany.org`;
   const password = process.env.TEST_USER_PASSWORD || generateStrongPassword();
-  const apiBase = process.env.API_URL || 'https://api.practicesoftwaretesting.com';
+  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+  const apiBase = process.env.API_URL || `${baseUrl}/api`;
 
   const payload = {
     first_name: 'Test',
